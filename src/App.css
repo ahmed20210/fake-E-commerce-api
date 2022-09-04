@@ -1,0 +1,11 @@
+.btn{
+    @apply rounded-md py-1 px-3 hover:opacity-70 font-bold bg-green-600 w-40 text-cyan-50
+}
+@media screen and (min-width: 1024px){
+.wid {
+        width: calc(100vw - 225px);
+    }
+}
+    
+
+
