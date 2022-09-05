@@ -27,7 +27,7 @@ function Docs() {
       </div>
       <div className="flex w-screen">
         <div
-          className={`fixed text-base top-0 w-56 p-5 pr-0 bg-gray-200 max-h-screen overflow-y-scroll ${show} lg:left-0`}
+          className={`fixed z-10 text-base top-0 w-56 p-5 pr-0 bg-gray-200 max-h-screen overflow-y-scroll ${show} lg:left-0`}
         >
           {Object.values(docs).map((value, index) => (
             <table key={index} className="mb-20">
