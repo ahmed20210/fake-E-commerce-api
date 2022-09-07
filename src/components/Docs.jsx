@@ -9,9 +9,7 @@ function Docs() {
 
   useEffect(() => {
     const data = async () => {
-      const res = await axios.get(
-        "https://e-commerce-backend-2022.herokuapp.com/"
-      );
+      const res = await axios.get("https://fake-e-commerce-api.onrender.com/");
       setDocs(res.data.document);
       setMainRoute(Object.keys(res.data.document));
     };
