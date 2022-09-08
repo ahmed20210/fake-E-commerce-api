@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import menu from "../images/list.png"
+import React, { useState } from "react";
+import menu from "../images/list.png";
+import document from "../assets/documents";
+import { protectedAPIsThatRequireLogin } from "../assets/documents";
 function Docs() {
   const [name, setName] = useState("");
-  const [docs, setDocs] = useState({});
- const [show, setShow] = useState("-left-56");
-  const [mainRoute, setMainRoute] = useState([]);
+  const [docs, setDocs] = useState(document);
+  const [show, setShow] = useState("-left-56");
+  const [mainRoute, setMainRoute] = useState(Object.keys(document));
 
-  useEffect(() => {
-    const data = async () => {
-      const res = await axios.get("https://fake-e-commerce-api.onrender.com/");
-      setDocs(res.data.document);
-      setMainRoute(Object.keys(res.data.document));
-    };
-    data();
-  }, []);
   return (
     <>
       <div
@@ -55,6 +48,18 @@ function Docs() {
         </div>
         <div className="w-56 h-screen hidden lg:block"></div>
         <div className="wid">
+          <div className="my-14 p-5">
+            <h2 className="text-3xl text-teal-600 uppercase font-extrabold my-14">
+              protectedAPIsThatRequireLogin
+            </h2>
+            <ul className=" text-blue-700 clear-left bg-gray-800 p-5 ">
+              {protectedAPIsThatRequireLogin.map((item, i) => (
+                <li className=" my-5" key={i}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
           <ul>
             {Object.values(docs).map((value, index) => (
               <li className="m-5" key={index}>
@@ -81,15 +86,20 @@ function Docs() {
                     </div>
                     <div className=" overflow-x-scroll bg-slate-800 p-5  text-white">
                       <pre className=" text-teal-500">
-                        
-                       <span className="text-white font-bold"> request body : {`  `} </span>
+                        <span className="text-white font-bold">
+                          {" "}
+                          request body : {`  `}{" "}
+                        </span>
                         {JSON.stringify(item.body, null, 2)
                           .replace(/\\n/g, "\n")
                           .replace(/\\/g, "")}
                       </pre>
-                      <span className="text-white font-bold">request param </span><code className="p-4 text-purple-500">
+                      <span className="text-white font-bold">
+                        request param{" "}
+                      </span>
+                      <code className="p-4 text-purple-500">
                         {item.params ? item.params : "no params"}
-                        </code>
+                      </code>
                     </div>
 
                     <button
@@ -112,7 +122,6 @@ function Docs() {
                             .replace(/\\/g, "")
                             .slice(1, -1)}
                         </pre>
-                        
                       </div>
                     ) : null}
                   </div>
