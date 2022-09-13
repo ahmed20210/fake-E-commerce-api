@@ -1,6 +1,6 @@
 // document
 // Products API
-const document = {
+const documents = {
   products: [
     {
       api: "/product",
@@ -1347,5 +1347,5 @@ const protectedAPIsThatRequireLogin = [
   "/whitelist",
 ];
 
-export default document;
+export default documents;
 export { protectedAPIsThatRequireLogin };

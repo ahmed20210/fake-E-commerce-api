@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import menu from "../images/list.png";
-import document from "../assets/documents";
+import documents from "../assets/documents";
 import { protectedAPIsThatRequireLogin } from "../assets/documents";
 function Docs() {
   const [name, setName] = useState("");
-  const [docs, setDocs] = useState(document);
+  const [docs, setDocs] = useState(documents);
   const [show, setShow] = useState("-left-56");
-  const [mainRoute, setMainRoute] = useState(Object.keys(document));
+  const [mainRoute, setMainRoute] = useState(Object.keys(documents));
 
   return (
     <>
@@ -32,8 +32,12 @@ function Docs() {
                 {value.map((item, i) => (
                   <tr
                     onClick={() => {
-                      window.innerWidth < 1024 ? setShow("-left-56") : null;
+                      if (window.innerWidth < 1024) {
+                        setShow("-left-56");
+                      }
+                     
                       const scroll = document.getElementById(item.description);
+                       
                       scroll.scrollIntoView({ behavior: "smooth" });
                     }}
                     key={i}
@@ -80,22 +84,20 @@ function Docs() {
                         {JSON.stringify(item.request, null, 2)
                           .replace(/\\n/g, "\n")
                           .replace(/\\/g, "")
-                          .slice(1, -1)
-                          .slice(0, -1)}
+                          .slice(1, -1)}
                       </pre>
                     </div>
                     <div className=" overflow-x-scroll bg-slate-800 p-5  text-white">
                       <pre className=" text-teal-500">
                         <span className="text-white font-bold">
-                          {" "}
-                          request body : {`  `}{" "}
+                          request body : {`  `}
                         </span>
                         {JSON.stringify(item.body, null, 2)
                           .replace(/\\n/g, "\n")
                           .replace(/\\/g, "")}
                       </pre>
                       <span className="text-white font-bold">
-                        request param{" "}
+                        request param
                       </span>
                       <code className="p-4 text-purple-500">
                         {item.params ? item.params : "no params"}
