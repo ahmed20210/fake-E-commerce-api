@@ -564,7 +564,7 @@ const documents = {
         })`,
     },
     {
-      api: "/product/category/:category/:list/:limit",
+      api: "/product/category/:category/limit/:list/:limit",
       method: "GET",
       description: "Get limited number of category",
       body: null,
@@ -650,14 +650,14 @@ const documents = {
       params: `:list => number of page / :limit => number of products in each page`,
       request: `
         axios.get(
-          "https://fake-e-commerce-api.onrender.com/product/category/Laptop/1/3")
+          "https://fake-e-commerce-api.onrender.com/product/category/Laptop/limit/1/3")
         .then((res) => {
           return res.data
           })`,
     },
 
     {
-      api: "/product/subcategory/:subcategory/:list/:limit",
+      api: "/product/subcategory/:subcategory/limit:list/:limit",
       method: "GET",
       description: "Get limited number of subcategory",
       body: null,
@@ -746,7 +746,7 @@ const documents = {
       params: `:list => number of page / :limit => number of products in each page`,
       request: `
         axios.get(
-          "https://fake-e-commerce-api.onrender.com/product/subcategory/Best Seller/1/3")
+          "https://fake-e-commerce-api.onrender.com/product/subcategory/Best Seller/limit/1/3")
         .then((res) => {
           return res.data
           })`,
